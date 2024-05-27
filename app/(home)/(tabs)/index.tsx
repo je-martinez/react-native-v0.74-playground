@@ -1,19 +1,27 @@
-import { Image, StyleSheet, Platform, Button, Text } from "react-native";
+import { Image, StyleSheet, Button, TextInput, View } from "react-native";
 
 import { HelloWave } from "@/home/components/HelloWave";
 import ParallaxScrollView from "@/home/components/ParallaxScrollView";
 import { ThemedText } from "@/shared/components/ThemedText";
 import { ThemedView } from "@/shared/components/ThemedView";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import {
-  decrement,
-  increment,
-  selectCount,
-} from "@/store/slices/counter.slice";
+import { useCounter } from "@/home/hooks";
+import { useState } from "react";
 
 export default function HomeScreen() {
-  const dispatch = useAppDispatch();
-  const count = useAppSelector(selectCount);
+  const {
+    counter,
+    incrementCounter,
+    incrementCounterByAmount,
+    decreaseCounter,
+  } = useCounter();
+
+  const [text, setText] = useState("");
+
+  const onIncrementCounterByAmount = () => {
+    if (isNaN(Number(text))) return;
+    incrementCounterByAmount(Number(text));
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -29,48 +37,25 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: "cmd + d", android: "cmd + m" })}
-          </ThemedText>{" "}
-          to open developer tools.
+        <ThemedText type="title" style={{ textAlign: "center" }}>
+          {counter}
         </ThemedText>
+        <View style={styles.counterContainer}>
+          <Button title="Increase counter" onPress={incrementCounter} />
+          <Button title="Decrease counter" onPress={decreaseCounter} />
+        </View>
+        <View>
+          <TextInput
+            style={styles.counterInput}
+            keyboardType="number-pad"
+            onChangeText={setText}
+          />
+          <Button
+            title="Increase counter by amount"
+            onPress={onIncrementCounterByAmount}
+          />
+        </View>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-      <Text style={{ textAlign: "center" }}>{count}</Text>
-      <Button
-        title="Increase counter"
-        onPress={() => {
-          dispatch(increment());
-        }}
-      />
-      <Button
-        title="Decrease counter"
-        onPress={() => {
-          dispatch(decrement());
-        }}
-      />
     </ParallaxScrollView>
   );
 }
@@ -80,6 +65,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+  },
+  counterContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  counterInput: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    borderRadius: 30,
+    padding: 10,
   },
   stepContainer: {
     gap: 8,

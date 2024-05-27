@@ -28,4 +28,4 @@ const counterSlice = createSlice({
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 export const { selectCount } = counterSlice.selectors;
-export default counterSlice.reducer;
+export const counterReducer = counterSlice.reducer;

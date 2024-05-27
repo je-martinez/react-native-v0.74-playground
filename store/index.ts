@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reduxStorage } from "./persist";
 import { persistReducer, persistStore } from "redux-persist";
-import counterReducer from "./slices/counter.slice";
+import { counterReducer } from "@/home/store";
 
 const persistConfig = {
   key: "root",
