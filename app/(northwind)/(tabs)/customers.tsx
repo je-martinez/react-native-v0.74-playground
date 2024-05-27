@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
-import ParallaxScrollView from "@/home/components/ParallaxScrollView";
+import ParallaxScrollView from "@/shared/components/ParallaxScrollView";
 import NavigationContainer from "@/shared/components/NavigationContainer";
 import { ThemedText } from "@/shared/components/ThemedText";
 import { ThemedView } from "@/shared/components/ThemedView";

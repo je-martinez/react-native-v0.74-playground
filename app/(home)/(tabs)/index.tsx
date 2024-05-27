@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Button, TextInput, View } from "react-native";
 
 import { HelloWave } from "@/home/components/HelloWave";
-import ParallaxScrollView from "@/home/components/ParallaxScrollView";
+import ParallaxScrollView from "@/shared/components/ParallaxScrollView";
 import { ThemedText } from "@/shared/components/ThemedText";
 import { ThemedView } from "@/shared/components/ThemedView";
 import { useCounter } from "@/home/hooks";
