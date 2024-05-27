@@ -3,7 +3,11 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/home/*": ["./app/(home)/*"],
+      "@/auth/*": ["./app/(auth)/*"],
+      "@/northwind/*": ["./app/(northwind)/*"],
+      "@/shared/*": ["./app/shared/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
