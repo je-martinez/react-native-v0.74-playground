@@ -6,6 +6,7 @@ import { ExternalLink } from "@/home/components/ExternalLink";
 import ParallaxScrollView from "@/home/components/ParallaxScrollView";
 import { ThemedText } from "@/shared/components/ThemedText";
 import { ThemedView } from "@/shared/components/ThemedView";
+import NavigationContainer from "@/shared/components/NavigationContainer";
 
 export default function TabTwoScreen() {
   return (
@@ -106,6 +107,7 @@ export default function TabTwoScreen() {
           ),
         })}
       </Collapsible>
+      <NavigationContainer />
     </ParallaxScrollView>
   );
 }

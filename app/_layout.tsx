@@ -45,8 +45,16 @@ export default function RootLayout() {
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
           <Stack>
+            {/* <Stack.Screen
+              name="(auth)/(tabs)"
+              options={{ headerShown: false }}
+            /> */}
             <Stack.Screen
               name="(home)/(tabs)"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="(northwind)/(tabs)"
               options={{ headerShown: false }}
             />
             <Stack.Screen name="+not-found" />
