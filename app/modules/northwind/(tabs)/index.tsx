@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
-import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
-import { Ionicons } from "@expo/vector-icons";
 import { ThemedView } from "@/ui/components/ThemedView";
 import { ThemedText } from "@/ui/components/ThemedText";
+import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Index() {
   return (
@@ -11,7 +11,7 @@ export default function Index() {
       headerImage={
         <Ionicons
           size={310}
-          name="information-circle"
+          name="information-circle-outline"
           style={styles.headerImage}
         />
       }

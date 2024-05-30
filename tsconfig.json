@@ -5,6 +5,7 @@
     "paths": {
       "@/*": ["./*"],
       "@/store/": ["./app/store/*"],
+      "@/types/": ["./app/types/*"],
       "@/modules/": ["./app/modules/*"],
       "@/home/*": ["./app/modules/home/*"],
       "@/northwind/*": ["./app/modules/northwind/*"],

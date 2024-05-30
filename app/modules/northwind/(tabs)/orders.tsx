@@ -1,9 +1,9 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
-import ParallaxScrollView from "@/ui//components/ParallaxScrollView";
-import NavigationContainer from "@/ui//components/NavigationContainer";
-import { ThemedText } from "@/ui//components/ThemedText";
-import { ThemedView } from "@/ui//components/ThemedView";
+import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
+import NavigationContainer from "@/ui/components/NavigationContainer";
+import { ThemedText } from "@/ui/components/ThemedText";
+import { ThemedView } from "@/ui/components/ThemedView";
 
 export default function OrdersScreen() {
   return (

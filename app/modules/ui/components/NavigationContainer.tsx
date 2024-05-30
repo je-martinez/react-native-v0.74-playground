@@ -23,6 +23,10 @@ export default function NavigationContainer() {
         title="/modules/json-placeholder/"
         onPress={() => push("/modules/json-placeholder/")}
       />
+      <Button
+        title="/modules/shared/navigation"
+        onPress={() => push("/modules/shared/navigation")}
+      />
     </View>
   );
 }

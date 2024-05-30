@@ -1,9 +1,9 @@
 import { Tabs } from "expo-router";
 import React from "react";
-
-import { TabBarIcon } from "@/app/modules/home/components/navigation/TabBarIcon";
+import { TabBarIcon } from "@/ui/components/TabBarIcon";
 import { Colors } from "@/app/modules/ui/constants/Colors";
 import { useColorScheme } from "@/app/modules/ui/hooks/useColorScheme";
+import { HomeModuleRoutes } from "../routes";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -17,7 +17,7 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="index"
+          name={HomeModuleRoutes.Index}
           options={{
             title: "Counter",
             tabBarIcon: ({ color, focused }) => (
@@ -29,7 +29,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="explore"
+          name={HomeModuleRoutes.Explore}
           options={{
             title: "Explore",
             tabBarIcon: ({ color, focused }) => (

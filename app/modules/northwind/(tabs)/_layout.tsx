@@ -1,9 +1,10 @@
 import { Tabs } from "expo-router";
 import React from "react";
 
-import { TabBarIcon } from "@/app/modules/home/components/navigation/TabBarIcon";
+import { TabBarIcon } from "@/ui/components/TabBarIcon";
 import { Colors } from "@/app/modules/ui/constants/Colors";
 import { useColorScheme } from "@/app/modules/ui/hooks/useColorScheme";
+import { NorthwindModuleRoutes } from "../routes";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -17,7 +18,19 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="customers"
+          name={NorthwindModuleRoutes.Index}
+          options={{
+            title: "Home",
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon
+                name={focused ? "information" : "information-outline"}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name={NorthwindModuleRoutes.Customers}
           options={{
             title: "Customers",
             tabBarIcon: ({ color, focused }) => (
@@ -29,7 +42,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="orders"
+          name={NorthwindModuleRoutes.Orders}
           options={{
             title: "Orders",
             tabBarIcon: ({ color, focused }) => (

@@ -1,8 +1,8 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet, Image, Platform } from "react-native";
 
-import { Collapsible } from "@/app/modules/home/components/Collapsible";
-import { ExternalLink } from "@/app/modules/home/components/ExternalLink";
+import { Collapsible } from "@/ui/components/Collapsible";
+import { ExternalLink } from "@/ui/components/ExternalLink";
 import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
@@ -107,7 +107,6 @@ export default function TabTwoScreen() {
           ),
         })}
       </Collapsible>
-      <NavigationContainer />
     </ParallaxScrollView>
   );
 }
