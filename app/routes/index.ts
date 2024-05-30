@@ -1,5 +1,6 @@
 export enum RootStackRoutes {
-  HomeModule = "(home)/(tabs)",
+  Index = "index",
+  HomeModule = "modules/home/(tabs)",
   JsonPlaceholder = "modules/json-placeholder/(screens)",
-  Northwind = "(northwind)/(tabs)",
+  Northwind = "modules/northwind/(tabs)",
 }

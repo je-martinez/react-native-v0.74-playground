@@ -3,21 +3,21 @@ import { Button, StyleSheet, View } from "react-native";
 
 export default function NavigationContainer() {
   const { push } = useRouter();
-  const route = usePathname();
-
-  console.log(route);
 
   return (
     <View style={styles.container}>
-      <Button title="/" onPress={() => push("/(home)/(tabs)")} />
-      <Button title="/explore" onPress={() => push("/(home)/(tabs)/explore")} />
+      <Button title="/modules/home" onPress={() => push("/modules/home")} />
       <Button
-        title="/customers"
-        onPress={() => push("/(northwind)/(tabs)/customers")}
+        title="/modules/home/explore"
+        onPress={() => push("/modules/home/explore")}
       />
       <Button
-        title="/orders"
-        onPress={() => push("/(northwind)/(tabs)/orders")}
+        title="/modules/northwind/customers"
+        onPress={() => push("/modules/northwind/customers")}
+      />
+      <Button
+        title="/modules/northwind/orders"
+        onPress={() => push("/modules/northwind/orders")}
       />
       <Button
         title="/modules/json-placeholder/"
@@ -30,7 +30,7 @@ export default function NavigationContainer() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignContent: "center",
     justifyContent: "center",
   },

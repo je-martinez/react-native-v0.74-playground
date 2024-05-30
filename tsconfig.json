@@ -4,10 +4,12 @@
     "strict": true,
     "paths": {
       "@/*": ["./*"],
-      "@/home/*": ["./app/(home)/*"],
-      "@/auth/*": ["./app/(auth)/*"],
-      "@/northwind/*": ["./app/(northwind)/*"],
-      "@/ui/*": ["./app/ui/*"]
+      "@/store/": ["./app/store/*"],
+      "@/modules/": ["./app/modules/*"],
+      "@/home/*": ["./app/modules/home/*"],
+      "@/northwind/*": ["./app/modules/northwind/*"],
+      "@/json-placeholder/*": ["./app/modules/json-placeholder/*"],
+      "@/ui/*": ["./app/modules/ui/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]

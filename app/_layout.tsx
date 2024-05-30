@@ -4,20 +4,20 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, usePathname } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { useColorScheme } from "@/app/modules/ui/hooks/useColorScheme";
 import { Provider } from "react-redux";
-import { persistor, store } from "@/store";
+import { persistor, store } from "@/app/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { RootStackRoutes } from "./routes";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(home)/(tabs)/index",
+  initialRouteName: "modules/home/(tabs)/index",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -28,6 +28,8 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+  const route = usePathname();
+  console.log(route);
 
   useEffect(() => {
     if (loaded) {
@@ -46,6 +48,7 @@ export default function RootLayout() {
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
           <Stack>
+            <Stack.Screen name={RootStackRoutes.Index} redirect />
             <Stack.Screen
               name={RootStackRoutes.HomeModule}
               options={{ headerShown: false }}
