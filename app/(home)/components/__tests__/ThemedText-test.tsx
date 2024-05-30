@@ -1,7 +1,7 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
 
-import { ThemedText } from "../../../shared/components/ThemedText";
+import { ThemedText } from "../../../ui/components/ThemedText";
 
 it(`renders correctly`, () => {
   const tree = renderer

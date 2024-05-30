@@ -1,12 +1,12 @@
 import { Image, StyleSheet, Button, TextInput, View } from "react-native";
 
 import { HelloWave } from "@/home/components/HelloWave";
-import ParallaxScrollView from "@/shared/components/ParallaxScrollView";
-import { ThemedText } from "@/shared/components/ThemedText";
-import { ThemedView } from "@/shared/components/ThemedView";
+import ParallaxScrollView from "@/ui//components/ParallaxScrollView";
+import { ThemedText } from "@/ui//components/ThemedText";
+import { ThemedView } from "@/ui//components/ThemedView";
 import { useCounter } from "@/home/hooks";
 import { useState } from "react";
-import NavigationContainer from "@/shared/components/NavigationContainer";
+import NavigationContainer from "@/ui//components/NavigationContainer";
 
 export default function HomeScreen() {
   const {
