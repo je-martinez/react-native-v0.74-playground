@@ -19,6 +19,10 @@ export default function NavigationContainer() {
         title="/orders"
         onPress={() => push("/(northwind)/(tabs)/orders")}
       />
+      <Button
+        title="/modules/json-placeholder/"
+        onPress={() => push("/modules/json-placeholder/")}
+      />
     </View>
   );
 }

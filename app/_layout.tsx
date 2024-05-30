@@ -13,6 +13,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { Provider } from "react-redux";
 import { persistor, store } from "@/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { RootStackRoutes } from "./routes";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -45,16 +46,16 @@ export default function RootLayout() {
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
           <Stack>
-            {/* <Stack.Screen
-              name="(auth)/(tabs)"
-              options={{ headerShown: false }}
-            /> */}
             <Stack.Screen
-              name="(home)/(tabs)"
+              name={RootStackRoutes.HomeModule}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="(northwind)/(tabs)"
+              name={RootStackRoutes.JsonPlaceholder}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name={RootStackRoutes.Northwind}
               options={{ headerShown: false }}
             />
             <Stack.Screen name="+not-found" />
