@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, SectionList } from "react-native";
 import { Link, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { Ionicons } from "@expo/vector-icons";
 
 const DATA = [
   {
@@ -49,21 +50,30 @@ export default function NavigationModal() {
           style={styles.dismissButton}
           href="../"
         >
-          Go Back
+          Close
         </Link>
       )}
       <SectionList
         sections={DATA}
         keyExtractor={(item, index) => item + index}
         renderItem={({ section, item }) => (
-          <Link
-            replace={true}
-            suppressHighlighting={true}
-            href={getPath(section.title, item)}
-            style={styles.item}
-          >
-            <Text style={styles.title}>{item}</Text>
-          </Link>
+          <View>
+            <Link
+              replace={true}
+              suppressHighlighting={true}
+              href={getPath(section.title, item)}
+              style={styles.item}
+            >
+              <Text style={styles.title}>{item}</Text>
+            </Link>
+            <View style={styles.iconItem}>
+              <Ionicons
+                name="chevron-forward-outline"
+                size={24}
+                color={"white"}
+              />
+            </View>
+          </View>
         )}
         renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.header}>{title}</Text>
@@ -78,22 +88,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  iconItem: {
+    position: "absolute",
+    right: "5%",
+    top: "35%",
+    zIndex: 50,
+  },
   dismissButton: {
     borderWidth: 3,
     borderColor: "white",
     padding: 10,
     marginTop: 10,
-    marginHorizontal: 50,
+    marginHorizontal: 150,
     borderRadius: 20,
     overflow: "hidden",
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0ea5e9",
     textAlign: "center",
   },
   item: {
     backgroundColor: "#0ea5e9",
+    borderRadius: 20,
+    marginHorizontal: 10,
     padding: 20,
     marginVertical: 8,
   },

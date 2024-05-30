@@ -18,7 +18,7 @@ export default function NavigationMenu() {
 const styles = StyleSheet.create({
   link: {},
   floatingButton: {
-    backgroundColor: "#1e40af",
+    backgroundColor: "#0ea5e9",
     color: "white",
     padding: 10,
     borderRadius: 50,

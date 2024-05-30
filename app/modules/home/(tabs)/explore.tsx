@@ -6,7 +6,6 @@ import { ExternalLink } from "@/ui/components/ExternalLink";
 import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
-import NavigationContainer from "@/ui/components/NavigationContainer";
 
 export default function TabTwoScreen() {
   return (

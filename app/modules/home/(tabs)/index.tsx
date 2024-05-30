@@ -6,7 +6,6 @@ import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
 import { useCounter } from "@/app/modules/home/hooks";
 import { useState } from "react";
-import NavigationContainer from "@/ui/components/NavigationContainer";
 
 export default function HomeScreen() {
   const {
@@ -57,7 +56,6 @@ export default function HomeScreen() {
           />
         </View>
       </ThemedView>
-      <NavigationContainer />
     </ParallaxScrollView>
   );
 }
