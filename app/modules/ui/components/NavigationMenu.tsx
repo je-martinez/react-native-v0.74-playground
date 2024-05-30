@@ -10,7 +10,7 @@ export default function NavigationMenu() {
       style={styles.floatingButton}
       onPress={() => push("/modules/shared/navigation")}
     >
-      <Ionicons name="location" size={30} color="white" />
+      <Ionicons name="menu-sharp" size={30} color="white" />
     </Pressable>
   );
 }

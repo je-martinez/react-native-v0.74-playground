@@ -1,30 +1,19 @@
 import { StyleSheet } from "react-native";
-import { ThemedView } from "@/ui/components/ThemedView";
-import { ThemedText } from "@/ui/components/ThemedText";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { Ionicons } from "@expo/vector-icons";
+import { ThemedView } from "@/ui/components/ThemedView";
+import { ThemedText } from "@/ui/components/ThemedText";
 
 export default function Index() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={
-        <Ionicons
-          size={310}
-          name="information-circle-outline"
-          style={styles.headerImage}
-        />
+        <Ionicons size={310} name="people" style={styles.headerImage} />
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Northwind</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">
-          Northwind database, it's a sample database developed by Microsoft that
-          showcases the features of their database products like SQL Server and
-          Microsoft Access.
-        </ThemedText>
+        <ThemedText type="title">Comments</ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );

@@ -6,7 +6,15 @@ export default function Layout() {
     <Stack>
       <Stack.Screen
         name={JsonPlaceholderModuleRoutes.Index}
-        options={{ headerShown: true, title: "Home" }}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={JsonPlaceholderModuleRoutes.Posts}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={JsonPlaceholderModuleRoutes.Comments}
+        options={{ headerShown: false }}
       />
     </Stack>
   );

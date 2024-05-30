@@ -19,6 +19,18 @@ export default function TabLayout() {
         <Tabs.Screen
           name={HomeModuleRoutes.Index}
           options={{
+            title: "Home",
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon
+                name={focused ? "information" : "information-outline"}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name={HomeModuleRoutes.Counter}
+          options={{
             title: "Counter",
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon

@@ -1,30 +1,14 @@
-import { Image, StyleSheet, Button, TextInput, View } from "react-native";
-
-import { HelloWave } from "@/app/modules/home/components/HelloWave";
+import { StyleSheet, Image } from "react-native";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
-import { ThemedText } from "@/ui/components/ThemedText";
+import { Ionicons } from "@expo/vector-icons";
 import { ThemedView } from "@/ui/components/ThemedView";
-import { useCounter } from "@/app/modules/home/hooks";
-import { useState } from "react";
+import { ThemedText } from "@/ui/components/ThemedText";
+import { HelloWave } from "@/home/components/HelloWave";
 
-export default function HomeScreen() {
-  const {
-    counter,
-    incrementCounter,
-    incrementCounterByAmount,
-    decreaseCounter,
-  } = useCounter();
-
-  const [text, setText] = useState("");
-
-  const onIncrementCounterByAmount = () => {
-    if (isNaN(Number(text))) return;
-    incrementCounterByAmount(Number(text));
-  };
-
+export default function Index() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={
         <Image
           source={require("@/assets/images/partial-react-logo.png")}
@@ -33,55 +17,31 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">React Native</ThemedText>
         <HelloWave />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="title" style={{ textAlign: "center" }}>
-          {counter}
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="subtitle">
+          React Native is a popular open-source framework created by Meta
+          Platforms (formerly Facebook) for building mobile apps. It allows
+          developers to use JavaScript and React to create native-looking
+          applications for iOS, Android, and other platforms.
         </ThemedText>
-        <View style={styles.counterContainer}>
-          <Button title="Increase counter" onPress={incrementCounter} />
-          <Button title="Decrease counter" onPress={decreaseCounter} />
-        </View>
-        <View>
-          <TextInput
-            style={styles.counterInput}
-            keyboardType="number-pad"
-            onChangeText={setText}
-          />
-          <Button
-            title="Increase counter by amount"
-            onPress={onIncrementCounterByAmount}
-          />
-        </View>
       </ThemedView>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  headerImage: {
+    color: "#808080",
+    bottom: -90,
+    left: -35,
+    position: "absolute",
+  },
   titleContainer: {
     flexDirection: "row",
-    alignItems: "center",
     gap: 8,
-  },
-  counterContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  counterInput: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 30,
-    padding: 10,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
   },
   reactLogo: {
     height: 178,

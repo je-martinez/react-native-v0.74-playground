@@ -17,7 +17,15 @@ export default function Index() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Northwind</ThemedText>
+        <ThemedText type="title">JSON Placeholder</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="subtitle">
+          JSON Placeholder is a free online service that functions as a mock
+          REST API. It provides developers with readily available fake data in
+          JSON format, which is useful for various purposes, particularly during
+          the initial development stages.
+        </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );
