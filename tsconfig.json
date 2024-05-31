@@ -10,7 +10,8 @@
       "@/home/*": ["./app/modules/home/*"],
       "@/northwind/*": ["./app/modules/northwind/*"],
       "@/json-placeholder/*": ["./app/modules/json-placeholder/*"],
-      "@/ui/*": ["./app/modules/ui/*"]
+      "@/ui/*": ["./app/modules/ui/*"],
+      "@/shared/*": ["./app/modules/shared/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]

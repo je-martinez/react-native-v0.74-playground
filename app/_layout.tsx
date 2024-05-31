@@ -9,12 +9,12 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/app/modules/ui/hooks/useColorScheme";
+import { useColorScheme } from "@/ui/hooks/useColorScheme";
 import { Provider } from "react-redux";
-import { persistor, store } from "@/app/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { RootStackRoutes } from "./routes";
 import NavigationMenu from "@/ui/components/NavigationMenu";
+import { persistor, store } from "@/app/store";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.

@@ -1,7 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reduxStorage } from "./persist";
 import { persistReducer, persistStore } from "redux-persist";
-import { counterReducer } from "@/app/modules/home/store";
+import { counterReducer } from "@/home/store";
+import {
+  commentsReducer,
+  postsReducer,
+  usersReducer,
+} from "@/json-placeholder/store";
 
 const persistConfig = {
   key: "root",
@@ -11,7 +16,12 @@ const persistConfig = {
 export const store = configureStore({
   reducer: persistReducer(
     persistConfig,
-    combineReducers({ counter: counterReducer })
+    combineReducers({
+      counter: counterReducer,
+      posts: postsReducer,
+      comments: commentsReducer,
+      users: usersReducer,
+    })
   ),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
