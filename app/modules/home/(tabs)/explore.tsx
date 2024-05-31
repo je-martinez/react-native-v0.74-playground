@@ -1,18 +1,22 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Image, Platform } from "react-native";
-
+import { Image, Platform, StyleSheet } from "react-native";
 import { Collapsible } from "@/ui/components/Collapsible";
+import CoverImage from "@/ui/components/CoverImage";
 import { ExternalLink } from "@/ui/components/ExternalLink";
+import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
-import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
+
+const image = {
+  source: require("@/assets/images/expo-logo.jpg"),
+  blurhash: "L58N6bWC00t7IUofxuRk4Zj@~Xj[",
+};
 
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={
-        <Ionicons size={310} name="code-slash" style={styles.headerImage} />
+        <CoverImage source={image.source} blurhash={image.blurhash} />
       }
     >
       <ThemedView style={styles.titleContainer}>
