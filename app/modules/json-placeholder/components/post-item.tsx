@@ -1,13 +1,13 @@
-import { ThemedText } from "@/ui/components/ThemedText";
-import { Post } from "../types";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Image } from "expo-image";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Post } from "../types";
 interface Props {
-  item: Post;
+  post: Post;
+  onCommentPress: (postId: number) => void;
 }
 
-export default function PostItem({ item: post }: Props) {
+export default function PostItem({ post, onCommentPress }: Props) {
   return (
     <View style={styles.container}>
       <Image
@@ -17,7 +17,12 @@ export default function PostItem({ item: post }: Props) {
       <View style={styles.content}>
         <Text style={styles.title}>{post.title}</Text>
         <Text style={styles.body}>{post.body}</Text>
-        <TouchableOpacity style={styles.commentButton} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.commentButton}
+          onPress={() => {
+            onCommentPress(post.id);
+          }}
+        >
           <MaterialCommunityIcons
             name="comment-outline"
             size={20}

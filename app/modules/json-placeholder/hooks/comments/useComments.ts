@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import {
   fetchComments as fetchCommentsFromApi,
   selectComments,
+  selectCommentsByPostId,
   selectErrorComments,
   selectLoadingComments,
 } from "../../store";
@@ -12,5 +13,7 @@ export const useComments = () => {
   const loading = useAppSelector(selectLoadingComments);
   const error = useAppSelector(selectErrorComments);
   const fetchComments = () => dispatch(fetchCommentsFromApi());
-  return { fetchComments, comments, loading, error };
+  const getCommentsByPostId = (postId: number) =>
+    useAppSelector((state) => selectCommentsByPostId(state, postId));
+  return { fetchComments, getCommentsByPostId, comments, loading, error };
 };

@@ -1,14 +1,14 @@
-import { StyleSheet, FlatList, useWindowDimensions } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedView } from "@/ui/components/ThemedView";
 import { ThemedText } from "@/ui/components/ThemedText";
-import { usePosts } from "../hooks";
-import PostItem from "../components/post-item";
 import { FlashList } from "@shopify/flash-list";
+import { useComments } from "../../hooks";
+import CommentItem from "../../components/comment-item";
 
-export default function PostsScreen() {
-  const { posts } = usePosts();
+export default function CommentsScreen() {
+  const { comments } = useComments();
   const { height, width } = useWindowDimensions();
 
   return (
@@ -17,11 +17,11 @@ export default function PostsScreen() {
         <ParallaxScrollView
           headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
           headerImage={
-            <Ionicons size={310} name="newspaper" style={styles.headerImage} />
+            <Ionicons size={310} name="people" style={styles.headerImage} />
           }
         >
           <ThemedView style={styles.titleContainer}>
-            <ThemedText type="title">Posts</ThemedText>
+            <ThemedText type="title">Comments</ThemedText>
           </ThemedView>
         </ParallaxScrollView>
       }
@@ -29,8 +29,8 @@ export default function PostsScreen() {
       estimatedFirstItemOffset={100}
       estimatedListSize={{ width, height }}
       estimatedItemSize={200}
-      data={posts}
-      renderItem={PostItem}
+      data={comments}
+      renderItem={CommentItem}
     />
   );
 }

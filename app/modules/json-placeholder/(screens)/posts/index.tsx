@@ -1,15 +1,21 @@
-import { StyleSheet, useWindowDimensions } from "react-native";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
-import { Ionicons } from "@expo/vector-icons";
-import { ThemedView } from "@/ui/components/ThemedView";
 import { ThemedText } from "@/ui/components/ThemedText";
+import { ThemedView } from "@/ui/components/ThemedView";
+import { Ionicons } from "@expo/vector-icons";
 import { FlashList } from "@shopify/flash-list";
-import { useComments } from "../hooks";
-import CommentItem from "../components/comment-item";
+import { useRouter } from "expo-router";
+import { StyleSheet, useWindowDimensions } from "react-native";
+import PostItem from "../../components/post-item";
+import { usePosts } from "../../hooks";
 
-export default function CommentsScreen() {
-  const { comments } = useComments();
+export default function PostsScreen() {
+  const { posts } = usePosts();
+  const { push } = useRouter();
   const { height, width } = useWindowDimensions();
+
+  const onCommentPress = (postId: number) => {
+    push(`/modules/json-placeholder/comments/by-post-id/${postId}`);
+  };
 
   return (
     <FlashList
@@ -17,11 +23,11 @@ export default function CommentsScreen() {
         <ParallaxScrollView
           headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
           headerImage={
-            <Ionicons size={310} name="people" style={styles.headerImage} />
+            <Ionicons size={310} name="newspaper" style={styles.headerImage} />
           }
         >
           <ThemedView style={styles.titleContainer}>
-            <ThemedText type="title">Comments</ThemedText>
+            <ThemedText type="title">Posts</ThemedText>
           </ThemedView>
         </ParallaxScrollView>
       }
@@ -29,8 +35,10 @@ export default function CommentsScreen() {
       estimatedFirstItemOffset={100}
       estimatedListSize={{ width, height }}
       estimatedItemSize={200}
-      data={comments}
-      renderItem={CommentItem}
+      data={posts}
+      renderItem={({ item: post }) => (
+        <PostItem post={post} onCommentPress={onCommentPress} />
+      )}
     />
   );
 }

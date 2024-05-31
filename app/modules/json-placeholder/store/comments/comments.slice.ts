@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Comment } from "../../types";
 import { fetchComments } from "./comments.thunks";
@@ -41,6 +41,15 @@ const commentsSlice = createSlice({
 });
 
 export const {} = commentsSlice.actions;
+
 export const { selectComments, selectLoadingComments, selectErrorComments } =
   commentsSlice.selectors;
+
+export const selectCommentsByPostId = createSelector(
+  selectComments,
+  (_, postId: number) => postId,
+  (comments: Comment[], postId: number) =>
+    comments.filter((comment) => comment.postId === postId)
+);
+
 export const commentsReducer = commentsSlice.reducer;

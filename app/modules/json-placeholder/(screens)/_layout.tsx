@@ -28,6 +28,10 @@ export default function Layout() {
         name={JsonPlaceholderModuleRoutes.Comments}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name={JsonPlaceholderModuleRoutes.CommentsByPostId}
+        options={{ headerShown: false, presentation: "modal" }}
+      />
     </Stack>
   );
 }
