@@ -17,11 +17,13 @@ export class HttpServer {
     });
 
     this._instance.interceptors.request.use((config) => {
-      console.log("Request Interceptor For Server: ", this.id);
+      console.log(`Request ${config.url}, server ${this.id}`);
       return config;
     });
     this._instance.interceptors.response.use((config) => {
-      console.log("Response Interceptor For Server: ", this.id);
+      console.log(
+        `Response ${config?.request?.responseURL}, server ${this.id}`
+      );
       return config;
     });
   }

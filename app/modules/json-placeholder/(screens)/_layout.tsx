@@ -1,7 +1,19 @@
 import { Stack } from "expo-router";
 import { JsonPlaceholderModuleRoutes } from "../routes";
+import { useComments, usePosts, useUsers } from "../hooks";
+import { useEffect } from "react";
 
 export default function Layout() {
+  const { fetchPosts } = usePosts();
+  const { fetchComments } = useComments();
+  const { fetchUsers } = useUsers();
+
+  useEffect(() => {
+    fetchPosts();
+    fetchComments();
+    fetchUsers();
+  }, []);
+
   return (
     <Stack>
       <Stack.Screen
