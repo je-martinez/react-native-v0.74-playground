@@ -1,11 +1,16 @@
-import { StyleSheet, useWindowDimensions } from "react-native";
+import CoverImage from "@/ui/components/CoverImage";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
-import { Ionicons } from "@expo/vector-icons";
-import { ThemedView } from "@/ui/components/ThemedView";
 import { ThemedText } from "@/ui/components/ThemedText";
+import { ThemedView } from "@/ui/components/ThemedView";
 import { FlashList } from "@shopify/flash-list";
-import { useComments } from "../../hooks";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import CommentItem from "../../components/comment-item";
+import { useComments } from "../../hooks";
+
+const image = {
+  source: require("@/assets/images/comments-logo.png"),
+  blurhash: "LIQt@dWq:5xakWWqS5js{IoI74R,",
+};
 
 export default function CommentsScreen() {
   const { comments } = useComments();
@@ -17,7 +22,7 @@ export default function CommentsScreen() {
         <ParallaxScrollView
           headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
           headerImage={
-            <Ionicons size={310} name="people" style={styles.headerImage} />
+            <CoverImage source={image.source} blurhash={image.blurhash} />
           }
         >
           <ThemedView style={styles.titleContainer}>

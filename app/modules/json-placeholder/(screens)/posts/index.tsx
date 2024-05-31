@@ -1,12 +1,17 @@
+import CoverImage from "@/ui/components/CoverImage";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
-import { Ionicons } from "@expo/vector-icons";
 import { FlashList } from "@shopify/flash-list";
 import { useRouter } from "expo-router";
 import { StyleSheet, useWindowDimensions } from "react-native";
 import PostItem from "../../components/post-item";
 import { usePosts } from "../../hooks";
+
+const image = {
+  source: require("@/assets/images/posts-logo.jpeg"),
+  blurhash: "LHRe~Qm?XpT}5qMcxKMa9brd$eO?",
+};
 
 export default function PostsScreen() {
   const { posts } = usePosts();
@@ -23,7 +28,7 @@ export default function PostsScreen() {
         <ParallaxScrollView
           headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
           headerImage={
-            <Ionicons size={310} name="newspaper" style={styles.headerImage} />
+            <CoverImage source={image.source} blurhash={image.blurhash} />
           }
         >
           <ThemedView style={styles.titleContainer}>

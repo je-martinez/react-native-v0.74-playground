@@ -2,8 +2,8 @@ import { HelloWave } from "@/home/components/HelloWave";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
-import { Image } from "expo-image";
 import { StyleSheet } from "react-native";
+import CoverImage from "@/ui/components/CoverImage";
 
 const image = {
   source: require("@/assets/images/partial-react-logo.png"),
@@ -15,13 +15,7 @@ export default function Index() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={
-        <Image
-          style={styles.reactLogo}
-          source={image.source}
-          placeholder={image.blurhash}
-          contentFit="cover"
-          transition={1000}
-        />
+        <CoverImage source={image.source} blurhash={image.blurhash} />
       }
     >
       <ThemedView style={styles.titleContainer}>
@@ -50,12 +44,5 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     gap: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
   },
 });
