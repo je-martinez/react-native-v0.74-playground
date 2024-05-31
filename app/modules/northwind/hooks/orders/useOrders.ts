@@ -11,6 +11,6 @@ export const useOrders = () => {
   const orders = useAppSelector(selectOrders);
   const loading = useAppSelector(selectLoadingOrders);
   const error = useAppSelector(selectErrorOrders);
-  const fetchOrders = () => dispatch(fetchOrdersFromApi);
+  const fetchOrders = () => dispatch(fetchOrdersFromApi());
   return { fetchOrders, orders, loading, error };
 };

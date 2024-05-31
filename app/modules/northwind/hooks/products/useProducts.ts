@@ -11,6 +11,6 @@ export const useProducts = () => {
   const products = useAppSelector(selectProducts);
   const loading = useAppSelector(selectLoadingProducts);
   const error = useAppSelector(selectErrorProducts);
-  const fetchProducts = () => dispatch(fetchProductsFromApi);
+  const fetchProducts = () => dispatch(fetchProductsFromApi());
   return { fetchProducts, products, loading, error };
 };

@@ -11,6 +11,6 @@ export const useCustomers = () => {
   const customers = useAppSelector(selectCustomers);
   const loading = useAppSelector(selectLoadingCustomers);
   const error = useAppSelector(selectErrorCustomers);
-  const fetchCustomers = () => dispatch(fetchCustomersFromApi);
+  const fetchCustomers = () => dispatch(fetchCustomersFromApi());
   return { fetchCustomers, customers, loading, error };
 };
