@@ -1,3 +1,3 @@
-export * from "./usePosts";
-export * from "./useComments";
-export * from "./useUsers";
+export * from "./posts/usePosts";
+export * from "./comments/useComments";
+export * from "./users/useUsers";
