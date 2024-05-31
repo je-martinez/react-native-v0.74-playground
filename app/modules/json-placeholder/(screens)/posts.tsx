@@ -1,21 +1,37 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, FlatList, useWindowDimensions } from "react-native";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedView } from "@/ui/components/ThemedView";
 import { ThemedText } from "@/ui/components/ThemedText";
+import { usePosts } from "../hooks";
+import PostItem from "../components/post-item";
+import { FlashList } from "@shopify/flash-list";
 
-export default function Index() {
+export default function PostsScreen() {
+  const { posts } = usePosts();
+  const { height, width } = useWindowDimensions();
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
-      headerImage={
-        <Ionicons size={310} name="newspaper" style={styles.headerImage} />
+    <FlashList
+      ListHeaderComponent={
+        <ParallaxScrollView
+          headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
+          headerImage={
+            <Ionicons size={310} name="newspaper" style={styles.headerImage} />
+          }
+        >
+          <ThemedView style={styles.titleContainer}>
+            <ThemedText type="title">Posts</ThemedText>
+          </ThemedView>
+        </ParallaxScrollView>
       }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Posts</ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      keyExtractor={(item) => item.id.toString()}
+      estimatedFirstItemOffset={100}
+      estimatedListSize={{ width, height }}
+      estimatedItemSize={200}
+      data={posts}
+      renderItem={PostItem}
+    />
   );
 }
 
