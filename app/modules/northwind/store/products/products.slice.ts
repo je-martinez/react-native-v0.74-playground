@@ -33,7 +33,14 @@ const productsSlice = createSlice({
       state.error = action.payload as string;
     });
   },
+  selectors: {
+    selectProducts: (state: ProductsState) => state.products,
+    selectLoadingProducts: (state: ProductsState) => state.loading,
+    selectErrorProducts: (state: ProductsState) => state.error,
+  },
 });
 
 export const {} = productsSlice.actions;
+export const { selectProducts, selectLoadingProducts, selectErrorProducts } =
+  productsSlice.selectors;
 export const productReducer = productsSlice.reducer;
