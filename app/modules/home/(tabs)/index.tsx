@@ -1,9 +1,14 @@
-import { StyleSheet, Image } from "react-native";
-import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
-import { Ionicons } from "@expo/vector-icons";
-import { ThemedView } from "@/ui/components/ThemedView";
-import { ThemedText } from "@/ui/components/ThemedText";
 import { HelloWave } from "@/home/components/HelloWave";
+import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
+import { ThemedText } from "@/ui/components/ThemedText";
+import { ThemedView } from "@/ui/components/ThemedView";
+import { Image } from "expo-image";
+import { StyleSheet } from "react-native";
+
+const image = {
+  source: require("@/assets/images/partial-react-logo.png"),
+  blurhash: "LGKn_64;~VW=~VRkxaNGS%R*M{xZ",
+};
 
 export default function Index() {
   return (
@@ -11,8 +16,11 @@ export default function Index() {
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
       headerImage={
         <Image
-          source={require("@/assets/images/partial-react-logo.png")}
           style={styles.reactLogo}
+          source={image.source}
+          placeholder={image.blurhash}
+          contentFit="cover"
+          transition={1000}
         />
       }
     >
