@@ -3,7 +3,7 @@ import {
   decrement,
   selectCount,
   incrementByAmount,
-} from "@/app/modules/home/store/counter.slice";
+} from "@/app/modules/home/store/counter/counter.slice";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 
 export const useCounter = () => {

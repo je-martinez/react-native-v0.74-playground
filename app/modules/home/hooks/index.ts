@@ -1,1 +1,1 @@
-export * from "./useCounter/useCounter";
+export * from "./useCounter";
