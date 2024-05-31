@@ -1,10 +1,10 @@
-import {
-  increment,
-  decrement,
-  selectCount,
-  incrementByAmount,
-} from "@/app/modules/home/store/counter/counter.slice";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  selectCount,
+} from "../../store";
 
 export const useCounter = () => {
   const dispatch = useAppDispatch();
