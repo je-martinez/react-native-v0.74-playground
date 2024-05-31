@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, TextInput, View } from "react-native";
+import { Button, Text, StyleSheet, TextInput, View } from "react-native";
 
 import { useCounter } from "@/app/modules/home/hooks";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
@@ -6,6 +6,15 @@ import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import * as yup from "yup";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup
+  .object({
+    value: yup.number().required(),
+  })
+  .required();
 
 export default function HomeScreen() {
   const {
@@ -15,12 +24,21 @@ export default function HomeScreen() {
     decreaseCounter,
   } = useCounter();
 
-  const [text, setText] = useState("");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      value: 0,
+    },
+    resolver: yupResolver(schema),
+  });
 
-  const onIncrementCounterByAmount = () => {
-    if (isNaN(Number(text))) return;
-    incrementCounterByAmount(Number(text));
-  };
+  const onSubmit = handleSubmit((data) => {
+    const { value } = data;
+    incrementCounterByAmount(value);
+  });
 
   return (
     <ParallaxScrollView
@@ -41,15 +59,26 @@ export default function HomeScreen() {
           <Button title="Decrease counter" onPress={decreaseCounter} />
         </View>
         <View>
-          <TextInput
-            style={styles.counterInput}
-            keyboardType="number-pad"
-            onChangeText={setText}
+          <Controller
+            control={control}
+            name="value"
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                style={styles.counterInput}
+                onBlur={onBlur}
+                keyboardType="number-pad"
+                onChangeText={onChange}
+                value={`${value}`}
+              />
+            )}
           />
-          <Button
-            title="Increase counter by amount"
-            onPress={onIncrementCounterByAmount}
-          />
+          {errors.value && (
+            <Text style={styles.errorMessage}>This is required.</Text>
+          )}
+          <Button title="Increase counter by amount" onPress={onSubmit} />
         </View>
       </ThemedView>
     </ParallaxScrollView>
@@ -80,6 +109,12 @@ const styles = StyleSheet.create({
     bottom: -90,
     left: -35,
     position: "absolute",
+  },
+  errorMessage: {
+    marginTop: 8,
+    color: "red",
+    fontSize: 12,
+    textAlign: "center",
   },
   stepContainer: {
     gap: 8,

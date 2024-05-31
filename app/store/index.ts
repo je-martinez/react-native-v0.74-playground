@@ -7,6 +7,11 @@ import {
   postsReducer,
   usersReducer,
 } from "@/json-placeholder/store";
+import {
+  customerReducer,
+  ordersReducer,
+  productReducer,
+} from "@/northwind/store";
 
 const persistConfig = {
   key: "root",
@@ -21,6 +26,9 @@ export const store = configureStore({
       posts: postsReducer,
       comments: commentsReducer,
       users: usersReducer,
+      customers: customerReducer,
+      products: productReducer,
+      orders: ordersReducer,
     })
   ),
   middleware: (getDefaultMiddleware) =>
