@@ -2,6 +2,7 @@ import { HttpServer } from "@/shared/types";
 import { Post } from "./posts.types";
 import { Comment } from "./comments.types";
 import { User } from "./users.types";
+
 const jsonPlaceholderApi = "https://jsonplaceholder.typicode.com";
 
 export class JsonPlaceholderApi extends HttpServer {
