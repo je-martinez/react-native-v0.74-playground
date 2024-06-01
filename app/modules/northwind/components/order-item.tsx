@@ -15,6 +15,13 @@ export default function OrderItem({ order }: Props) {
     return dayjs.default(date).format("MMMM D, YYYY");
   }, [order.orderDate]);
 
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -60,10 +67,13 @@ export default function OrderItem({ order }: Props) {
           </View>
         </View>
 
-        <Collapsible title="Order Details">
+        <Collapsible key={order.id} title="Order Details">
           <View style={styles.detailsContainer}>
             {order.details.map((detail: OrderDetail, index: number) => (
-              <View key={index} style={styles.detailItem}>
+              <View
+                key={`${order.id}-${detail.productId}-${index}}`}
+                style={styles.detailItem}
+              >
                 <Text style={styles.detailProductName}>
                   {detail.product?.name}
                 </Text>
@@ -71,7 +81,10 @@ export default function OrderItem({ order }: Props) {
                   Quantity: {detail.quantity}
                 </Text>
                 <Text style={styles.detailPrice}>
-                  Price: ${detail.unitPrice}
+                  Price: {formatCurrency(detail.unitPrice)}
+                </Text>
+                <Text style={styles.detailTotal}>
+                  Total: {formatCurrency(detail.quantity * detail.unitPrice)}
                 </Text>
               </View>
             ))}
@@ -141,6 +154,10 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   detailPrice: {
+    color: "#666",
+  },
+  detailTotal: {
+    fontWeight: "bold",
     color: "#666",
   },
 });
