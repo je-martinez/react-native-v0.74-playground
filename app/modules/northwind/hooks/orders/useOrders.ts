@@ -4,6 +4,7 @@ import {
   selectErrorOrders,
   selectLoadingOrders,
   selectOrders,
+  selectOrdersByCustomerId,
 } from "../../store";
 
 export const useOrders = () => {
@@ -12,5 +13,7 @@ export const useOrders = () => {
   const loading = useAppSelector(selectLoadingOrders);
   const error = useAppSelector(selectErrorOrders);
   const fetchOrders = () => dispatch(fetchOrdersFromApi());
-  return { fetchOrders, orders, loading, error };
+  const getOrdersByCustomer = (customerId: string) =>
+    useAppSelector((state) => selectOrdersByCustomerId(state, customerId));
+  return { fetchOrders, getOrdersByCustomer, orders, loading, error };
 };

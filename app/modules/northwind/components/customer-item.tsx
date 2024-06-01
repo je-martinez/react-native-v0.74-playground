@@ -4,9 +4,10 @@ import { Ionicons } from "@expo/vector-icons";
 
 interface Props {
   customer: Customer;
+  onSeeOrdersPress: (customerId: string) => void;
 }
 
-export default function CustomerItem({ customer }: Props) {
+export default function CustomerItem({ customer, onSeeOrdersPress }: Props) {
   const address = `${customer.address.street}, ${customer.address.city}, ${customer.address.region}, ${customer.address.country}, ${customer.address.postalCode}`;
 
   return (
@@ -42,7 +43,12 @@ export default function CustomerItem({ customer }: Props) {
         <Text style={styles.label}>Phone:</Text>
         <Text>{customer.address.phone}</Text>
       </View>
-      <TouchableOpacity onPress={() => {}} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => {
+          onSeeOrdersPress(customer.id);
+        }}
+        style={styles.button}
+      >
         <Text style={styles.buttonText}>See Orders</Text>
       </TouchableOpacity>
     </View>

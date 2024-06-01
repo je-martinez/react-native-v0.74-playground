@@ -4,8 +4,8 @@ import { ThemedView } from "@/ui/components/ThemedView";
 import { StyleSheet, useWindowDimensions } from "react-native";
 import CoverImage from "@/ui/components/CoverImage";
 import { FlashList } from "@shopify/flash-list";
-import { useOrders } from "../hooks";
-import OrderItem from "../components/order-item";
+import { useOrders } from "../../hooks";
+import OrderItem from "../../components/order-item";
 
 const image = {
   source: require("@/assets/images/orders-logo.jpeg"),

@@ -4,8 +4,9 @@ import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
 import { FlashList } from "@shopify/flash-list";
 import { StyleSheet, useWindowDimensions } from "react-native";
-import { useCustomers } from "../hooks";
-import CustomerItem from "../components/customer-item";
+import { useCustomers } from "../../hooks";
+import CustomerItem from "../../components/customer-item";
+import { useRouter } from "expo-router";
 
 const image = {
   source: require("@/assets/images/customers-logo.png"),
@@ -15,6 +16,11 @@ const image = {
 export default function CustomersScreen() {
   const { customers } = useCustomers();
   const { height, width } = useWindowDimensions();
+  const { push } = useRouter();
+
+  const onSeeOrders = (customerId: string) => {
+    push(`/modules/northwind/orders/by-customer/${customerId}`);
+  };
 
   return (
     <FlashList
@@ -35,7 +41,9 @@ export default function CustomersScreen() {
       estimatedListSize={{ width, height }}
       estimatedItemSize={200}
       data={customers}
-      renderItem={({ item: customer }) => <CustomerItem customer={customer} />}
+      renderItem={({ item: customer }) => (
+        <CustomerItem customer={customer} onSeeOrdersPress={onSeeOrders} />
+      )}
     />
   );
 }

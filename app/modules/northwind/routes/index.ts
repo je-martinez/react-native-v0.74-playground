@@ -1,5 +1,6 @@
 export enum NorthwindModuleRoutes {
   Index = "index",
-  Customers = "customers",
-  Orders = "orders",
+  Customers = "customers/index",
+  Orders = "orders/index",
+  OrdersByCustomer = "orders/by-customer/[customerId]",
 }

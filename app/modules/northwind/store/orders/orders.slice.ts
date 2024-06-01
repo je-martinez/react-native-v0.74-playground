@@ -59,4 +59,12 @@ export const selectOrders = createSelector(
       })),
     }))
 );
+
+export const selectOrdersByCustomerId = createSelector(
+  selectOrders,
+  (_, customerId: string) => customerId,
+  (orders: Order[], customerId: string) =>
+    orders?.filter((order) => order.customerId === customerId)
+);
+
 export const ordersReducer = ordersSlice.reducer;

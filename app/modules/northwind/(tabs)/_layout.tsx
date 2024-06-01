@@ -1,4 +1,4 @@
-import { Tabs } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 import React, { useEffect } from "react";
 
 import { TabBarIcon } from "@/ui/components/TabBarIcon";
@@ -39,6 +39,7 @@ export default function TabLayout() {
             ),
           }}
         />
+
         <Tabs.Screen
           name={NorthwindModuleRoutes.Customers}
           options={{

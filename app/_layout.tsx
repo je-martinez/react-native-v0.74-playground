@@ -60,8 +60,12 @@ export default function RootLayout() {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name={RootStackRoutes.Northwind}
+              name={RootStackRoutes.NorthwindTabs}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name={RootStackRoutes.NorthwindModals}
+              options={{ headerShown: false, presentation: "modal" }}
             />
             <Stack.Screen
               name={RootStackRoutes.Shared}
