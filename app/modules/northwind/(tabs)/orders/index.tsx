@@ -28,9 +28,6 @@ export default function OrdersScreen() {
           <ThemedView style={styles.titleContainer}>
             <ThemedText type="title">Orders</ThemedText>
           </ThemedView>
-          <ThemedText>
-            This app includes example code to help you get started.
-          </ThemedText>
         </ParallaxScrollView>
       }
       keyExtractor={(item) => item.id.toString()}
