@@ -1,16 +1,8 @@
-import { useMemo, useState } from "react";
-import { Order, OrderDetail } from "../types";
-import { Ionicons } from "@expo/vector-icons"; // Importing Ionicons from Expo Icons
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import * as dayjs from "dayjs";
 import { Collapsible } from "@/ui/components/Collapsible";
-import { ThemedText } from "@/ui/components/ThemedText";
+import * as dayjs from "dayjs";
+import { useMemo } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Order, OrderDetail } from "../types";
 
 interface Props {
   order: Order;
@@ -32,38 +24,35 @@ export default function OrderItem({ order }: Props) {
         <View style={styles.invoiceInfo}>
           <View style={styles.infoContainer}>
             <Text style={styles.label}>Order #:</Text>
-            <Text style={styles.value}>{order.id}</Text>
+            <Text style={styles.labelNormal}>{order.id}</Text>
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.label}>Customer ID:</Text>
-            <Text style={styles.value}>{order.customerId}</Text>
+            <Text style={styles.labelNormal}>{order.customerId}</Text>
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.label}>Employee ID:</Text>
-            <Text style={styles.value}>{order.employeeId}</Text>
+            <Text style={styles.labelNormal}>{order.employeeId}</Text>
           </View>
           {order.orderDate && (
             <View style={styles.infoContainer}>
               <Text style={styles.label}>Order Date:</Text>
-              <Text style={styles.value}>{formattedDate}</Text>
+              <Text style={styles.labelNormal}>{formattedDate}</Text>
             </View>
           )}
           <View style={styles.infoContainer}>
             <Text style={styles.label}>Freight:</Text>
-            <Text style={styles.value}>{order.freight}</Text>
+            <Text style={styles.labelNormal}>{order.freight}</Text>
           </View>
           <View style={styles.infoContainer}>
-            <Text style={styles.label}>Ship Address:</Text>
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            >
-              <Text style={styles.value}>
+            <Text style={styles.label}>
+              Ship Address:{" "}
+              <Text style={styles.labelNormal}>
                 {order.shipAddress.street}, {order.shipAddress.city},{" "}
                 {order.shipAddress.region}, {order.shipAddress.country},{" "}
                 {order.shipAddress.postalCode}
               </Text>
-            </ScrollView>
+            </Text>
           </View>
         </View>
 
@@ -111,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   invoiceInfo: {
-    marginBottom: 15,
+    marginBottom: 5,
   },
   infoContainer: {
     flexDirection: "row",
@@ -122,7 +111,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginRight: 5,
   },
-  value: {},
+  labelNormal: {
+    fontWeight: "normal",
+    marginRight: 5,
+  },
   detailsContainer: {
     borderTopWidth: 1,
     borderTopColor: "#ccc",
