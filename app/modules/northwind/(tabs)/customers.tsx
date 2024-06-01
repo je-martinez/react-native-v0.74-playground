@@ -2,7 +2,10 @@ import CoverImage from "@/ui/components/CoverImage";
 import ParallaxScrollView from "@/ui/components/ParallaxScrollView";
 import { ThemedText } from "@/ui/components/ThemedText";
 import { ThemedView } from "@/ui/components/ThemedView";
-import { StyleSheet } from "react-native";
+import { FlashList } from "@shopify/flash-list";
+import { StyleSheet, useWindowDimensions } from "react-native";
+import { useCustomers } from "../hooks";
+import CustomerItem from "../components/customer-item";
 
 const image = {
   source: require("@/assets/images/customers-logo.png"),
@@ -10,20 +13,30 @@ const image = {
 };
 
 export default function CustomersScreen() {
+  const { customers } = useCustomers();
+  const { height, width } = useWindowDimensions();
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
-      headerImage={
-        <CoverImage source={image.source} blurhash={image.blurhash} />
+    <FlashList
+      ListHeaderComponent={
+        <ParallaxScrollView
+          headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
+          headerImage={
+            <CoverImage source={image.source} blurhash={image.blurhash} />
+          }
+        >
+          <ThemedView style={styles.titleContainer}>
+            <ThemedText type="title">Customers</ThemedText>
+          </ThemedView>
+        </ParallaxScrollView>
       }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Customers</ThemedText>
-      </ThemedView>
-      <ThemedText>
-        This app includes example code to help you get started.
-      </ThemedText>
-    </ParallaxScrollView>
+      keyExtractor={(item) => item.id.toString()}
+      estimatedFirstItemOffset={100}
+      estimatedListSize={{ width, height }}
+      estimatedItemSize={200}
+      data={customers}
+      renderItem={({ item: customer }) => <CustomerItem customer={customer} />}
+    />
   );
 }
 

@@ -4,7 +4,7 @@ interface CustomerRelations {
   orders?: Order[];
 }
 
-export interface Customer extends CustomerRelations {
+export interface Customer {
   id: string;
   companyName: string;
   contactName: string;
