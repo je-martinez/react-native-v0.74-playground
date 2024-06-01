@@ -19,7 +19,7 @@ export default function PostsScreen() {
   const { height, width } = useWindowDimensions();
 
   const onCommentPress = (postId: number) => {
-    push(`/modules/json-placeholder/comments/by-post-id/${postId}`);
+    push(`/modules/json-placeholder/comments/by-post/${postId}`);
   };
 
   return (
