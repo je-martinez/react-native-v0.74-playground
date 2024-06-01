@@ -1,7 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Order } from "../../types";
 import { fetchOrders } from "./orders.thunks";
+import { selectProducts } from "../products/products.slice";
+import { selectCustomers } from "../customers/customers.slice";
 
 interface OrdersState {
   orders: Order[];
@@ -34,13 +36,27 @@ const ordersSlice = createSlice({
     });
   },
   selectors: {
-    selectOrders: (state: OrdersState) => state.orders,
+    _selectOrders: (state: OrdersState) => state.orders,
     selectLoadingOrders: (state: OrdersState) => state.loading,
     selectErrorOrders: (state: OrdersState) => state.error,
   },
 });
 
 export const {} = ordersSlice.actions;
-export const { selectOrders, selectLoadingOrders, selectErrorOrders } =
+export const { _selectOrders, selectLoadingOrders, selectErrorOrders } =
   ordersSlice.selectors;
+export const selectOrders = createSelector(
+  _selectOrders,
+  selectCustomers,
+  selectProducts,
+  (orders, customers, products) =>
+    orders.map((order) => ({
+      ...order,
+      customer: customers.find((customer) => customer.id === order.customerId),
+      details: order.details.map((detail) => ({
+        ...detail,
+        product: products.find((product) => product.id === detail.productId),
+      })),
+    }))
+);
 export const ordersReducer = ordersSlice.reducer;

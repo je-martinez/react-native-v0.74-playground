@@ -27,8 +27,12 @@ export default function OrderItem({ order }: Props) {
             <Text style={styles.labelNormal}>{order.id}</Text>
           </View>
           <View style={styles.infoContainer}>
-            <Text style={styles.label}>Customer ID:</Text>
-            <Text style={styles.labelNormal}>{order.customerId}</Text>
+            <Text style={styles.label}>
+              Customer:{" "}
+              <Text style={styles.labelNormal}>
+                {order.customer?.companyName}
+              </Text>
+            </Text>
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.label}>Employee ID:</Text>
