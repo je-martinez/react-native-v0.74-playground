@@ -77,15 +77,29 @@ export default function OrderItem({ order }: Props) {
                 <Text style={styles.detailProductName}>
                   {detail.product?.name}
                 </Text>
-                <Text style={styles.detailQuantity}>
-                  Quantity: {detail.quantity}
-                </Text>
-                <Text style={styles.detailPrice}>
-                  Price: {formatCurrency(detail.unitPrice)}
-                </Text>
-                <Text style={styles.detailTotal}>
-                  Total: {formatCurrency(detail.quantity * detail.unitPrice)}
-                </Text>
+                <View style={styles.detailLine}>
+                  <Text style={styles.detailQuantity}>Quantity</Text>
+                  <Text style={styles.detaiAmount}>{detail.quantity}</Text>
+                </View>
+
+                <View style={styles.detailLine}>
+                  <Text style={styles.detailPrice}>Price</Text>
+                  <Text style={styles.detaiAmount}>
+                    {formatCurrency(detail.unitPrice)}
+                  </Text>
+                </View>
+
+                <View
+                  style={StyleSheet.compose(
+                    styles.totalMargin,
+                    styles.detailLine
+                  )}
+                >
+                  <Text style={styles.detailTotal}>Total</Text>
+                  <Text style={styles.detaiAmountTotal}>
+                    {formatCurrency(detail.quantity * detail.unitPrice)}
+                  </Text>
+                </View>
               </View>
             ))}
           </View>
@@ -150,13 +164,35 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 5,
   },
+  detailLine: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  totalMargin: {
+    marginTop: 10,
+  },
   detailQuantity: {
+    flex: 1,
+    textAlign: "left",
+    color: "#666",
+  },
+  detaiAmount: {
+    flex: 0.5,
+    textAlign: "right",
+    color: "#666",
+  },
+  detaiAmountTotal: {
+    flex: 1,
+    textAlign: "right",
+    fontWeight: "bold",
     color: "#666",
   },
   detailPrice: {
+    flex: 1,
     color: "#666",
   },
   detailTotal: {
+    flex: 1,
     fontWeight: "bold",
     color: "#666",
   },
