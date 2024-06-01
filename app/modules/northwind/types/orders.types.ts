@@ -1,4 +1,4 @@
-import { Customer } from "./customer.types";
+import { Customer } from "./customers.types";
 import { Product } from "./products.types";
 
 interface OrderRelations {
@@ -23,7 +23,7 @@ interface OrderDetailRelations {
   product?: Product;
 }
 
-export interface OrderDetail {
+export interface OrderDetail extends OrderDetailRelations {
   productId: number;
   unitPrice: number;
   quantity: number;

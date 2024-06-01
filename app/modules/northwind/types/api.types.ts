@@ -1,5 +1,5 @@
 import { HttpServer } from "../../shared/types";
-import { Customer } from "./customer.types";
+import { Customer } from "./customers.types";
 import { Order } from "./orders.types";
 import { Product } from "./products.types";
 
