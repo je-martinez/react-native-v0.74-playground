@@ -2,6 +2,7 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Comment } from "../../types";
 import { fetchComments } from "./comments.thunks";
+import { createPersistReducer } from "../../../../store/utils";
 
 interface CommentsState {
   loading: boolean;
@@ -15,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies CommentsState as CommentsState;
 
+const name = "comments";
+
 const commentsSlice = createSlice({
-  name: "comments",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -52,4 +55,6 @@ export const selectCommentsByPostId = createSelector(
     comments.filter((comment) => comment.postId === postId)
 );
 
-export const commentsReducer = commentsSlice.reducer;
+export const commentsReducer = createPersistReducer(commentsSlice.reducer, {
+  key: name,
+});

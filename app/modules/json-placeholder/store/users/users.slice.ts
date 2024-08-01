@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../types";
 import { fetchUsers } from "./users.thunks";
+import { createPersistReducer } from "../../../../store/utils";
 
 interface UsersState {
   loading: boolean;
@@ -15,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies UsersState as UsersState;
 
+const name = "users";
+
 const usersSlice = createSlice({
-  name: "users",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -43,4 +46,6 @@ const usersSlice = createSlice({
 export const {} = usersSlice.actions;
 export const { selectUsers, selectLoadingUsers, selectErrorUsers } =
   usersSlice.selectors;
-export const usersReducer = usersSlice.reducer;
+export const usersReducer = createPersistReducer(usersSlice.reducer, {
+  key: name,
+});

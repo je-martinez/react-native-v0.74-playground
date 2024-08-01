@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../../types";
 import { fetchProducts } from "./products.thunks";
+import { createPersistReducer } from "../../../../store/utils";
 
 interface ProductsState {
   products: Product[];
@@ -15,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies ProductsState as ProductsState;
 
+const name = "products";
+
 const productsSlice = createSlice({
-  name: "products",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -43,4 +46,6 @@ const productsSlice = createSlice({
 export const {} = productsSlice.actions;
 export const { selectProducts, selectLoadingProducts, selectErrorProducts } =
   productsSlice.selectors;
-export const productReducer = productsSlice.reducer;
+export const productReducer = createPersistReducer(productsSlice.reducer, {
+  key: name,
+});
