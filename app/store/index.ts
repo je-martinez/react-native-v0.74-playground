@@ -13,24 +13,16 @@ import {
   productReducer,
 } from "@/northwind/store";
 
-const persistConfig = {
-  key: "root",
-  storage: reduxStorage,
-};
-
 export const store = configureStore({
-  reducer: persistReducer(
-    persistConfig,
-    combineReducers({
-      counter: counterReducer,
-      posts: postsReducer,
-      comments: commentsReducer,
-      users: usersReducer,
-      customers: customerReducer,
-      products: productReducer,
-      orders: ordersReducer,
-    })
-  ),
+  reducer: combineReducers({
+    counter: counterReducer,
+    posts: postsReducer,
+    comments: commentsReducer,
+    users: usersReducer,
+    customers: customerReducer,
+    products: productReducer,
+    orders: ordersReducer,
+  }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
