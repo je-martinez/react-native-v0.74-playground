@@ -18,8 +18,10 @@ const initialState = {
   error: null,
 } satisfies OrdersState as OrdersState;
 
+const name = "orders";
+
 const ordersSlice = createSlice({
-  name: "orders",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -69,5 +71,5 @@ export const selectOrdersByCustomerId = createSelector(
 );
 
 export const ordersReducer = createPersistReducer(ordersSlice.reducer, {
-  key: "orders",
+  key: name,
 });

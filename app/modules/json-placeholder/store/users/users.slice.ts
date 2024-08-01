@@ -16,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies UsersState as UsersState;
 
+const name = "users";
+
 const usersSlice = createSlice({
-  name: "users",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -45,5 +47,5 @@ export const {} = usersSlice.actions;
 export const { selectUsers, selectLoadingUsers, selectErrorUsers } =
   usersSlice.selectors;
 export const usersReducer = createPersistReducer(usersSlice.reducer, {
-  key: "users",
+  key: name,
 });

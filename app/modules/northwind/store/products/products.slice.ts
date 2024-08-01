@@ -16,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies ProductsState as ProductsState;
 
+const name = "products";
+
 const productsSlice = createSlice({
-  name: "products",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -45,5 +47,5 @@ export const {} = productsSlice.actions;
 export const { selectProducts, selectLoadingProducts, selectErrorProducts } =
   productsSlice.selectors;
 export const productReducer = createPersistReducer(productsSlice.reducer, {
-  key: "products",
+  key: name,
 });

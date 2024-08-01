@@ -8,8 +8,10 @@ interface CounterState {
 
 const initialState = { value: 0 } satisfies CounterState as CounterState;
 
+const name = "counter";
+
 const counterSlice = createSlice({
-  name: "counter",
+  name,
   initialState,
   reducers: {
     increment(state) {
@@ -30,5 +32,5 @@ const counterSlice = createSlice({
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 export const { selectCount } = counterSlice.selectors;
 export const counterReducer = createPersistReducer(counterSlice.reducer, {
-  key: "counter",
+  key: name,
 });

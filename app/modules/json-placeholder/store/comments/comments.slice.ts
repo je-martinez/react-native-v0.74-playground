@@ -16,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies CommentsState as CommentsState;
 
+const name = "comments";
+
 const commentsSlice = createSlice({
-  name: "comments",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -54,5 +56,5 @@ export const selectCommentsByPostId = createSelector(
 );
 
 export const commentsReducer = createPersistReducer(commentsSlice.reducer, {
-  key: "comments",
+  key: name,
 });

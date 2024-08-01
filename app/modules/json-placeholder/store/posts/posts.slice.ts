@@ -16,8 +16,10 @@ const initialState = {
   error: null,
 } satisfies PostsState as PostsState;
 
+const name = "posts";
+
 const postsSlice = createSlice({
-  name: "posts",
+  name,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -46,5 +48,5 @@ export const {} = postsSlice.actions;
 export const { selectPosts, selectLoadingPosts, selectErrorPosts } =
   postsSlice.selectors;
 export const postsReducer = createPersistReducer(postsSlice.reducer, {
-  key: "posts",
+  key: name,
 });
