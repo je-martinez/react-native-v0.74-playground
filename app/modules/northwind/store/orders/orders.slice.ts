@@ -4,6 +4,7 @@ import { Order } from "../../types";
 import { fetchOrders } from "./orders.thunks";
 import { selectProducts } from "../products/products.slice";
 import { selectCustomers } from "../customers/customers.slice";
+import { createPersistReducer } from "../../../../store/utils";
 
 interface OrdersState {
   orders: Order[];
@@ -67,4 +68,6 @@ export const selectOrdersByCustomerId = createSelector(
     orders?.filter((order) => order.customerId === customerId)
 );
 
-export const ordersReducer = ordersSlice.reducer;
+export const ordersReducer = createPersistReducer(ordersSlice.reducer, {
+  key: "orders",
+});

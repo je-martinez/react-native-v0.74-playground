@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Post } from "../../types";
 import { fetchPosts } from "./posts.thunks";
+import { createPersistReducer } from "../../../../store/utils";
 
 export interface PostsState {
   loading: boolean;
@@ -44,4 +45,6 @@ const postsSlice = createSlice({
 export const {} = postsSlice.actions;
 export const { selectPosts, selectLoadingPosts, selectErrorPosts } =
   postsSlice.selectors;
-export const postsReducer = postsSlice.reducer;
+export const postsReducer = createPersistReducer(postsSlice.reducer, {
+  key: "posts",
+});

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Customer } from "../../types";
 import { fetchCustomers } from "./customers.thunks";
+import { createPersistReducer } from "../../../../store/utils";
 
 interface CustomersState {
   customers: Customer[];
@@ -43,4 +44,6 @@ const customersSlice = createSlice({
 export const {} = customersSlice.actions;
 export const { selectCustomers, selectLoadingCustomers, selectErrorCustomers } =
   customersSlice.selectors;
-export const customerReducer = customersSlice.reducer;
+export const customerReducer = createPersistReducer(customersSlice.reducer, {
+  key: "customers",
+});
